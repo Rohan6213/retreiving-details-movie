@@ -1,0 +1,44 @@
+import java.sql.*;
+  
+public class GFG {
+  
+    
+    public static void main(String[] args)
+    {
+        
+        Connection con = null;
+        PreparedStatement p = null;
+        ResultSet rs = null;
+  
+        con = connection.connectDB();
+  
+        try {
+  
+         
+            String sql = "select * from Movie";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+  
+            
+            System.out.println("Genre\Director\Actor\Actress\Movie");
+  
+          
+            while (rs.next()) {
+  
+                String Genre  = rs.getInt("Genre");
+                String Director = rs.getString("Director");
+                String Actor = rs.getString("Actor");
+                String Actress = rs.getString("Actress");
+                String Movie = rs.getString("Movie");
+                System.out.println("Genre\Director\Actor\Actress\Movie");
+            }
+        }
+  
+       
+        catch (SQLException e) {
+  
+           
+            System.out.println(e);
+        }
+    }
+}
