@@ -1,0 +1,86 @@
+CREATE DATABASE Movies123
+USE Movies123;
+
+
+CREATE TABLE Genre(
+GenreID varchar(10) NOT NULL PRIMARY KEY,
+GenreType varchar(30) NOT NULL
+);
+
+
+CREATE TABLE Director(
+DirectorID varchar(10) NOT NULL PRIMARY KEY,
+DirectorName varchar(30) NOT NULL,
+DirectoryNationality varchar(30) NOT NULL
+);
+
+
+CREATE TABLE Actor(
+ActorID varchar(10) NOT NULL PRIMARY KEY,
+ActorName varchar(30) NOT NULL
+);
+
+
+CREATE TABLE Actress(
+ActressID varchar(10) NOT NULL PRIMARY KEY,
+ActressName varchar(30) NOT NULL
+);
+
+ 
+CREATE TABLE Movie (
+MovieID varchar(10) NOT NULL PRIMARY KEY,
+MovieTitle varchar (30) NOT NULL,
+ReleaseDate DATE NOT NULL,
+GenereID varchar(10) FOREIGN KEY References Genre(GenreID),
+DirectorID varchar (10) FOREIGN KEY References Director(DirectorID)
+);
+
+
+INSERT INTO Genre VALUES 
+				('G01', 'Action'),
+				('G02', 'Comedy'),
+				('G03', 'Thriller'),
+				('G04', 'Drama'),
+				('G05', 'Crime');
+
+INSERT INTO Director VALUES 
+					('D01', 'Zack Snyder', 'American'),
+					('D02', 'Tim Miller', 'American'),
+					('D03', 'James Wan', 'Australian'),
+					('D04', 'Rajkumar Hirani', 'Indian'),
+					('D05', 'Ridley Scott', 'British'),
+					('D06', 'Todd Phillips', 'American'),
+					('D07', 'Rajkumar Hirani', 'Indian'),
+					('D08', 'Sam Mendes', 'British');
+
+INSERT INTO Actor VALUES 
+					('AR01', 'Henry Cavill'),
+					('AR02', 'Ryan Reynolds'),
+					('AR03', 'Vin Diesel'),
+					('AR04', 'Aamir Khan'),
+					('AR05', 'Russell Crowe'),
+					('AR06', 'Bradley Cooper'),
+					('AR07', 'Aamir Khan'),
+					('AR08', 'Daniel Craig');
+
+INSERT INTO Actress VALUES 
+					('AS01', 'Amy Adams'),
+					('AS02', 'Morena Baccarin'),
+					('AS03', 'Michelle Rodriguez'),
+					('AS04', 'Anushka Sharma'),
+					('AS05', 'Connie Nielsen'),
+					('AS06', 'Heather Graham'),
+					('AS07', 'Kareena Kapoor'),
+					('AS08', 'Léa Seydoux');
+
+INSERT INTO Movie VALUES 
+    				('M01', 'Superman vs Batman','AR01','AS01', '2016-03-25', 'G01', 'D01'),
+    				('M02', 'Deadpool', 'AR02','AS02','2016-02-12', 'G02', 'D02'),
+    				('M03', 'Furious 7','ARO3','AS03','2015-04-03', 'G03', 'D03'),
+    				('M04', 'PK', 'ARO4','AS04','2014-12-19', 'G04', 'D04'),
+    				('M05', 'Gladiator', 'ARO5', 'AS05','2000-05-05', 'G01', 'D05'),
+    				('M06', 'The Hangover','AR06','AS06', '2009-06-05', 'G02', 'D06'),
+    				('M07', '3 Idiots', 'AR07','AS07','2009-12-25', 'G04', 'D04'),
+    				('M08', 'Spectre', 'AR08', 'AS08','2015-11-06', 'G03', 'D07');
+
+SELECT * FROM Movie;
